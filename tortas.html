@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasteles - Panadería La Migaja</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo de Panadería La Migaja">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="galletas.html">Galletas</a></li>
+                <li><a href="panes.html">Panes</a></li>
+                <li><a href="pasteles.html">Pasteles</a></li>                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="products">
+            <h2>Tortas</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="assets/productos/producttorta1.jpg" alt="Torta de durazno">
+                    <h3>Torta De Durazno <br> (1/2 Libra)</h3>
+                    <p>Deliciosa torta de durazno. <br>Rinde 15 porciones</p>
+                    <p>Día disponible: Sobre pedido</p>
+                    <p></p>
+                    <p>Valor: $20.000</p>
+                    <button class="add-to-cart" data-name="Pastel Tres Leches (1/2 Libra)" data-price="20000">Añadir al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/productos/producttorta1.jpg" alt="Pastel Tres Leches">
+                    <h3>Pastel De Durazno <br> (1 Libra)</h3>
+                    <p>Deliciosa torta de durazno. <br>Rinde 50 porciones</p>
+                    <p>Día disponible: Sobre pedido</p>
+                    <p>Valor: $70.000</p>
+                    <button class="add-to-cart" data-name="Pastel Tres Leches (1 Libra)" data-price="70000">Añadir al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/productos/tortachoco.jpg" alt="Pastel de Coco">
+                    <h3>Pastel de Coco <br> (1/2 Libra)</h3>
+                    <p>Deliciosa torta de durazno. <br>Rinde 15 porciones</p>
+                    <p>Día disponible: Sobre pedido</p>
+                    <p>Valor: $18.000</p>
+                    <button class="add-to-cart" data-name="Pastel de Coco (1/2 Libra)" data-price="18000">Añadir al carrito</button>
+                </div>
+                <!-- Agrega más productos aquí -->
+            </div>
+        </section>
+
+        <section class="cart">
+            <h2>Carrito de Compras</h2>
+            <div class="cart-items">
+                <!-- Los productos añadidos al carrito aparecerán aquí -->
+            </div>
+            <div class="cart-total">
+                <p>Total: $<span id="total">0</span></p>
+            </div>
+            <button id="checkout">Finaliza tu compra</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Panadería La Migaja. Todos los derechos reservados.</p>
+    </footer>
+    <a href="https://wa.me/3118136934" class="whatsapp-btn" target="_blank">
+        <img src="icons/whatsapp.png" alt="WhatsApp">
+    </a>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -99,13 +99,20 @@ nav ul li a:hover {
         text-align: center;
     }
     video {
-        object-fit: contain; /* Muestra el video completo sin recortar */
+        object-fit: cover; /* Muestra el video completo sin recortar */
+    }
+    .products-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-card {
+        width: 90%; /* Ocupa más espacio en móviles */
     }
 }
 
 /* Estilos para la sección hero */
 .hero {
-    background: url('assets/fondo1.jpg') no-repeat center center/cover;
+    background: url('assets/fondos/fondo1.jpg') no-repeat center center/cover;
     color: var(--text-color);
     height: 100vh;
     display: flex;
@@ -159,7 +166,7 @@ nav ul li a:hover {
 
 /* Estilos para la sección de productos */
 .products {
-    background: url('assets/fondo2.jpg') no-repeat center center/cover;
+    background: url('assets/fondos/fondo2.jpg') no-repeat center center/cover;
     padding: 4rem 2rem;
     text-align: center;
     margin-bottom: 1px;
@@ -224,7 +231,7 @@ nav ul li a:hover {
 /* Estilos para la galería */
 .gallery {
     padding: 4rem 2rem;
-    background: url('Fondos/Fondo3.jpg') no-repeat center center/cover;
+    background: url('assets/fondos/fondo3.jpg') no-repeat center center/cover;
     text-align: center;
 }
 
@@ -242,9 +249,9 @@ nav ul li a:hover {
     padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
     position: relative;
     margin: 0 auto;
-    border: none(--border-radius);
+    border: none;
     overflow: hidden;
-    box-shadow: none(--card-shadow);
+    box-shadow: none;
     
 }
 
@@ -326,7 +333,7 @@ footer {
     width: 60px;
     height: 60px;
     text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: 0.3s ease, transform 0.3s ease;
 }
 
 .whatsapp-btn img {
@@ -346,6 +353,11 @@ footer {
     margin-top: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
+}
+.cart-empty {
+    text-align: center;
+    color: #888;
+    font-style: italic;
 }
 
 .cart h2 {
@@ -445,9 +457,11 @@ footer {
 
 /* Estilos para la biografía */
 .biografia {
-    background: url('Fondos/Fondo2.jpg') no-repeat center center / cover;
+    margin-top: 1px;
+    
+    background: url('assets/fondos/fondobiografia.png') no-repeat center center / cover;
     text-align: center;
-    padding: 20px;
+    padding: 70px;
 }
 
 .titulo-biografia {
@@ -468,7 +482,7 @@ footer {
     font-size: 1.3rem;
     flex: 1;
     margin-right: 20px;
-    text-align: left;
+    text-align: left; 
 }
 
 .foto {

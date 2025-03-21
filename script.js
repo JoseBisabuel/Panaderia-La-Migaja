@@ -1,88 +1,98 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Variables globales
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Carga el carrito desde localStorage
-    const cartContainer = document.querySelector('.cart-items'); // Contenedor del carrito
-    const totalElement = document.getElementById('total'); // Elemento donde se muestra el total
-    const checkoutButton = document.getElementById('checkout'); // Botón de WhatsApp
+    console.log("Página cargada"); // Verifica que el script se esté ejecutando
 
-    // Verifica si los elementos del carrito existen en la página
-    if (cartContainer && totalElement && checkoutButton) {
-        // Función para actualizar el carrito
-        function updateCart() {
-            cartContainer.innerHTML = ''; // Esto limpia el contenido del carrito
+    // Cargar el carrito desde localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    console.log("Carrito cargado desde localStorage:", cartItems); // Verifica el contenido del carrito
+
+    // Seleccionar elementos del carrito (solo si existen)
+    const cartContainer = document.querySelector('.cart-items');
+    const totalElement = document.getElementById('total');
+    const checkoutButton = document.getElementById('checkout');
+
+    // Función para actualizar el carrito
+    function updateCart() {
+        if (cartContainer && totalElement) {
+            console.log("Actualizando carrito..."); // Verifica que la función se esté ejecutando
+            cartContainer.innerHTML = '';
             let total = 0;
 
-            // Recorre los productos en el carrito y los muestra
             cartItems.forEach((item, index) => {
                 const cartItem = document.createElement('div');
                 cartItem.classList.add('cart-item');
-
-                // Contenido del producto en el carrito
                 cartItem.innerHTML = `
                     <div class="item-info">
-                        <span class="item-name">${item.name}</span>
-                        <span class="item-price">$${item.price.toLocaleString()}</span>
+                        <span class="item-name">${item.name} (${item.quantity})</span>
+                        <span class="item-price">$${(item.price * item.quantity).toLocaleString()}</span>
                     </div>
                     <button class="remove-item" data-index="${index}">Eliminar</button>
                 `;
                 cartContainer.appendChild(cartItem);
-                total += item.price;
+                total += item.price * item.quantity;
             });
 
-            // Mostrar el total debajo de los productos
             totalElement.textContent = total.toLocaleString();
+            localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guardar en localStorage
+            console.log("Carrito guardado en localStorage:", cartItems); // Verifica que el carrito se guardó
 
-            // Guardar el carrito en localStorage
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-            // Agrega eventos a los botones de eliminar
+            // Asignar eventos a los botones de eliminar (solo si existen)
             addRemoveItemEvents();
         }
+    }
 
-        // Función para añadir eventos a los botones de eliminar
-        function addRemoveItemEvents() {
-            document.querySelectorAll('.remove-item').forEach((button) => {
-                button.addEventListener('click', function () {
-                    const index = this.getAttribute('data-index'); // Índice del producto a eliminar
-                    cartItems.splice(index, 1); // Elimina el producto del carrito
-                    updateCart(); // Actualiza la vista del carrito
-                });
-            });
-        }
-
-        // Añadir productos al carrito
-        document.querySelectorAll('.add-to-cart').forEach((button) => {
+    // Función para añadir eventos a los botones de eliminar
+    function addRemoveItemEvents() {
+        document.querySelectorAll('.remove-item').forEach((button) => {
             button.addEventListener('click', function () {
-                const name = this.getAttribute('data-name'); // Nombre del producto
-                const price = parseInt(this.getAttribute('data-price')); // Precio del producto
-
-                // Añade el producto al carrito
-                cartItems.push({ name, price });
-                updateCart(); // Actualiza la vista del carrito 
+                const index = this.getAttribute('data-index');
+                cartItems.splice(index, 1); // Eliminar el producto del array
+                updateCart(); // Actualizar la vista del carrito
             });
         });
+    }
 
-        // Continuar pedido por WhatsApp
+    // Añadir productos al carrito (solo en páginas de productos)
+    document.querySelectorAll('.add-to-cart').forEach((button) => {
+        button.addEventListener('click', function () {
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'));
+
+            console.log("Nombre del producto:", name); // Verifica que el nombre sea correcto
+            console.log("Precio del producto:", price); // Verifica que el precio sea correcto
+
+            const existingItem = cartItems.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push({ name, price, quantity: 1 });
+            }
+
+            console.log("Carrito actualizado:", cartItems); // Verifica el contenido del carrito
+            localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Guardar en localStorage
+            updateCart(); // Actualizar la vista del carrito
+        });
+    });
+
+    // Continuar pedido por WhatsApp (solo en la página del carrito)
+    if (checkoutButton) {
         checkoutButton.addEventListener('click', function () {
             if (cartItems.length === 0) {
                 alert('Tu carrito está vacío. Añade productos antes de continuar.');
                 return;
             }
 
-            // Crear el mensaje para WhatsApp
             const message = cartItems
-                .map((item) => `${item.name} - $${item.price.toLocaleString()}`)
-                .join('%0A'); // Separar cada producto con un salto de línea
-            const total = cartItems.reduce((sum, item) => sum + item.price, 0); // Calcular el total
-            const whatsappUrl = `https://wa.me/3118136934?text=Hola, quiero hacer un pedido:%0A${message}%0ATotal: $${total.toLocaleString()}`;
+                .map((item) => `${item.name} (${item.quantity}) - $${(item.price * item.quantity).toLocaleString()}`)
+                .join('%0A');
+            const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const whatsappUrl = `https://wa.me/3144030783?text=Hola, quiero hacer este pedido:%0A${message}%0ATotal: $${total.toLocaleString()}`;
 
-            // Abrir WhatsApp en una nueva pestaña
             window.open(whatsappUrl, '_blank');
         });
+    }
 
-        // Cargar el carrito al iniciar la página
+    // Cargar el carrito al iniciar la página (solo si el contenedor del carrito existe)
+    if (cartContainer && totalElement) {
         updateCart();
-    } else {
-        console.log('El carrito no está presente en esta página.');
     }
 });

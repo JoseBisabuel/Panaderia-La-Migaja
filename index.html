@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panadería La Migaja</title>
+    <title>La Migaja Panadería</title>
     <meta name="description" content="Panadería La Migaja - Los mejores panes, pasteles y galletas hechos con amor.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/otros/logo.png">
 </head>
 <body>
     <header>
@@ -23,7 +23,7 @@
     </header>
     <main>
         <section id="inicio" class="hero">
-            <h1>Panadería La Migaja</h1>
+            <h1>La Migaja Panadería</h1>
             <p>Hecho con amor, horneado con pasión.</p>            
             <div class="social-media">
                 <a href="https://www.facebook.com/p/Panader%C3%ADa-La-Migaja-100064134217607/?locale=fy_NL" target="_blank" aria-label="Facebook">
@@ -74,18 +74,28 @@
                 </div>
             </div>
         </section>
-    
         <section id="galeria" class="gallery">
-            <h2>Galería</h2>
-            <div class="video-container">
-                <video controls autoplay muted loop>                
-                    <source src="assets/Video/video01.mp4" type="video/mp4">
-                    <source src="assets/Video/video01.webm" type="video/webm">
-                    Tu navegador no soporta la etiqueta de video.
-                </video>
+            <h2>Galeria</h2>
+            <div class="gallery-reel">
+                <div class="reel-track">
+                    <div class="reel-item">
+                        <img src="assets/galeria/galeria1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="reel-item">
+                        <img src="assets/galeria/galeria2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="reel-item">
+                        <img src="assets/galeria/galeria3.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="reel-item">
+                        <img src="assets/galeria/galeria4.jpg" alt="Imagen 4">
+                    </div>
+                </div>
             </div>
+            <!-- Controles manuales -->
+            <button class="prev-btn" aria-label="Anterior"></button>
+            <button class="next-btn" aria-label="Siguiente"></button>
         </section>
-
         <section class="biografia">
             <h2 class="titulo-biografia">Nuestra Historia</h2>
             <div class="contenido-biografia">
@@ -108,6 +118,6 @@
     <a href="https://wa.me/3118136934" class="whatsapp-btn" target="_blank">
         <img src="assets/icons/whatsapp.png" alt="WhatsApp">
     </a>
-    <script src="script.js"></script> 
+    <script js src="js/main.js"></script> 
 </body>
 </html>

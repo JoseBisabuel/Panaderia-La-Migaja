@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galletas - Panadería La Migaja</title>
+    <title>Galletas - La Migaja Panadería</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/otros/logo.png">
 </head>
 <body>
     <header>
@@ -15,9 +15,8 @@
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="panes.html">Panes</a></li>
-                <li><a href="pasteles.html">Pasteles</a></li>
-                <li><a href="tortas.html">Tortas</a></li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="#carrito">Carrito</a></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +52,7 @@
             </div>
         </section>
 
-        <section class="cart">
+        <section id="carrito" class="cart">
             <h2>Carrito de Compras</h2>
             <div class="cart-items">
                 <!-- Los productos añadidos al carrito aparecerán aquí -->
@@ -70,6 +69,6 @@
     <a href="https://wa.me/3118136934" class="whatsapp-btn" target="_blank">
         <img src="assets/icons/whatsapp.png" alt="WhatsApp">
     </a>
-    <script src="script.js"></script>
+    <script src="js/carrito.js" defer></script>
 </body>
 </html>

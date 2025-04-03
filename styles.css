@@ -1,3 +1,4 @@
+/* ========== VARIABLES Y RESET ========== */
 :root {
     --primary-color: #ffcc00;
     --secondary-color: #e6b800;
@@ -8,7 +9,6 @@
     --border-radius: 10px;
 }
 
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@ body {
     color: #333;
 }
 
-/* Estilos generales del header */
+/* ========== HEADER ========== */
 header {
     background-color: rgba(41, 39, 39, 0.5);
     color: var(--text-color);
@@ -36,12 +36,8 @@ header {
     z-index: 1000;
 }
 
-header .logo img {
+.logo img {
     height: 60px;
-}
-
-nav {
-    margin-right: 2px;
 }
 
 nav ul {
@@ -52,66 +48,22 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
+nav a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-nav ul li a:hover {
+nav a:hover {
     color: var(--primary-color);
     transform: scale(1.2);
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 768px) {
-    header {
-        padding: 0.5rem 1rem;
-    }
-
-    header .logo img {
-        height: 50px;
-    }
-
-    nav ul {
-        gap: 10px;
-    }
-
-    nav ul li a {
-        font-size: 0.9rem;
-    }
-
-    .contenido-biografia {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .descripcion {
-        margin-right: 0;
-        margin-bottom: 20px;
-        text-align: left;
-    }
-
-    .foto {
-        text-align: center;
-    }
-    video {
-        object-fit: cover; /* Muestra el video completo sin recortar */
-    }
-    .products-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .product-card {
-        width: 90%; /* Ocupa más espacio en móviles */
-    }
-}
-
-/* Estilos para la sección hero */
+/* ========== HERO SECTION ========== */
 .hero {
-    background: url('assets/fondos/fondo1.jpg') no-repeat center center/cover;
+    background: url('assets/fondos/fondo1.png') no-repeat center/cover;
     color: var(--text-color);
     height: 100vh;
     display: flex;
@@ -140,7 +92,7 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: var(--border-radius);
     font-size: 1.2rem;
-    transition: 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .hero .btn:hover {
@@ -163,9 +115,9 @@ nav ul li a:hover {
     transform: scale(1.2);
 }
 
-/* Estilos para la sección de productos */
+/* ========== PRODUCTOS ========== */
 .products {
-    background: url('assets/fondos/fondo2.jpg') no-repeat center center/cover;
+    background: url('assets/fondos/fondo2.png') no-repeat center/cover;
     padding: 4rem 2rem;
     text-align: center;
     margin-bottom: 1px;
@@ -187,8 +139,7 @@ nav ul li a:hover {
 }
 
 .product-card {
-    background: var(--text-color);
-    background: #ffffffac;
+    background: rgba(255, 255, 255, 0.67);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -198,7 +149,7 @@ nav ul li a:hover {
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    min-height: 5px; /* Ajusta este valor según sea necesario */
+    min-height: 5px;
 }
 
 .product-card:hover {
@@ -221,143 +172,134 @@ nav ul li a:hover {
     font-size: 1rem;
     margin: 0.5rem 0;
     color: #555;
-    flex-grow: 1; /* Hace que el texto ocupe el espacio restante */
+    flex-grow: 1;
 }
 
-.product-card .add-to-cart {
-    margin-top: 0.5rem;
-}
-
-/* Estilos para la galería */
+/* ========== GALERÍA ========== */
 .gallery {
-    padding: 4rem 2rem;
-    background: url('assets/fondos/fondo3.jpg') no-repeat center center/cover;
+    font-weight: bold;
+    padding: 4rem 0;
+    background: url('assets/fondos/fondoGaleria.png') no-repeat center/cover;
     text-align: center;
+    color: white;
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
 }
 
 .gallery h2 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #fff;
-    
 }
 
-.video-container {
-    max-width: 800px;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+.gallery-reel {
     position: relative;
-    margin: 0 auto;
-    border: none;
-    overflow: hidden;
-    box-shadow: none;
-    
-}
-
-video {    
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 800px;
+    margin: auto;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .reel-track {
     display: flex;
     width: 100%;
+    height: 100%;
     transition: transform 0.5s ease;
 }
 
 .reel-item {
     flex: 0 0 100%;
-    position: relative;
-    overflow: hidden;
-    height: 500px;
+    min-width: 100%;
+    height: 100%;
 }
 
 .reel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--border-radius);
+    border-radius: 10px;
 }
 
+/* Controles de navegación */
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.381);
     border: none;
-    padding: 10px;
     cursor: pointer;
     z-index: 10;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Estilos para el footer */
-footer {
-    background: var(--background-color);
-    color: var(--text-color);
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
-
-/* Estilos para el botón de WhatsApp */
-.whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    padding: 15px;
     border-radius: 50%;
-    box-shadow: var(--card-shadow);
-    z-index: 1000;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
-    text-decoration: none;
-    transition: 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 0;
 }
 
-.whatsapp-btn img {
-    width: 50px;
-    height: auto;
+.prev-btn::before, .next-btn::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+    transition: all 0.3s ease;
 }
 
-.whatsapp-btn:hover {
-    background: var(--hover-color);
-    transform: scale(1.1);
+.prev-btn::before {
+    transform: rotate(45deg);
+    margin-right: 3px;
 }
 
-/* Estilos para el carrito */
+.next-btn::before {
+    transform: rotate(-135deg);
+    margin-left: 3px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(188, 27, 177, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn:hover::before, .next-btn:hover::before {
+    border-color: var(--primary-color);
+}
+
+.prev-btn {
+    left: 50px;
+}
+
+.next-btn {
+    right: 50px;
+}
+
+.prev-btn:active, .next-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+@keyframes pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.1); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+.prev-btn, .next-btn {
+    animation: pulse 3s infinite;
+}
+
+/* ========== CARRITO ========== */
 .cart {
     padding: 2rem;
-    background: #d1cfcf25;
+    background: rgba(209, 207, 207, 0.15);
     margin-top: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
-}
-.cart-empty {
-    text-align: center;
-    color: #888;
-    font-style: italic;
 }
 
 .cart h2 {
@@ -419,6 +361,7 @@ footer {
     border-top: 2px solid #ddd;
 }
 
+/* ========== BOTONES ========== */
 .add-to-cart {
     background: #4CAF50;
     color: var(--text-color);
@@ -427,18 +370,40 @@ footer {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
     margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .add-to-cart:hover {
     background: #45a049;
 }
 
+.add-to-cart::after {
+    content: "+ Producto añadido";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff0202;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.add-to-cart.show-notification::after {
+    opacity: 1;
+}
+
 #checkout {
     background: #25d366;
     color: var(--text-color);
-    padding: 20px 20px;
+    padding: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -455,11 +420,47 @@ footer {
     background: var(--hover-color);
 }
 
-/* Estilos para la biografía */
+/* ========== FOOTER Y WHATSAPP ========== */
+footer {
+    background: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: var(--card-shadow);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn img {
+    width: 50px;
+    height: auto;
+}
+
+.whatsapp-btn:hover {
+    background: var(--hover-color);
+    transform: scale(1.1);
+}
+
+/* ========== BIOGRAFÍA ========== */
 .biografia {
     margin-top: 1px;
-    
-    background: url('assets/fondos/fondobiografia.png') no-repeat center center / cover;
+    background: url('assets/fondos/fondobiografia.png') no-repeat center/cover;
     text-align: center;
     padding: 70px;
 }
@@ -482,7 +483,7 @@ footer {
     font-size: 1.3rem;
     flex: 1;
     margin-right: 20px;
-    text-align: left; 
+    text-align: left;
 }
 
 .foto {
@@ -494,4 +495,57 @@ footer {
     max-width: 100%;
     height: auto;
     border-radius: var(--border-radius);
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .gallery-reel {
+        height: 250px;
+        max-width: 90%;
+    }
+
+    .prev-btn, .next-btn {
+        width: 40px;
+        height: 40px;
+        top: 60%;
+    }
+
+    .prev-btn::before, .next-btn::before {
+        width: 15px;
+        height: 15px;
+    }
+
+    .products-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .product-card {
+        width: 90%;
+    }
+
+    .contenido-biografia {
+        flex-direction: column;
+    }
+
+    .descripcion {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }
